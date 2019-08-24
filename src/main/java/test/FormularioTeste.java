@@ -1,6 +1,8 @@
 package test;
 
 import core.BaseTest;
+import io.appium.java_client.MobileBy;
+import org.openqa.selenium.By;
 import page.FormularioPage;
 import page.MenuPage;
 import org.junit.Assert;
@@ -29,7 +31,7 @@ public class FormularioTeste extends BaseTest {
 
 
     @Test
-    public void PreencheCampoTexto() {
+    public void preencheCampoTexto() {
         /**Cenário */
         formularioPage.escreverNome("Lucas");
 
@@ -39,7 +41,7 @@ public class FormularioTeste extends BaseTest {
     }
 
     @Test
-    public void InterageComboBox() throws MalformedURLException {
+    public void interageComboBox() throws MalformedURLException {
 
         /**Cenário */
         formularioPage.selecionarComboBox("PS4");
@@ -50,7 +52,7 @@ public class FormularioTeste extends BaseTest {
     }
 
     @Test
-    public void InterageSwitchCheckBox() {
+    public void interageSwitchCheckBox() {
         /**Cenário */
         //Verificar status do CheckBox e do Switch antes do clique.
         Assert.assertFalse(formularioPage.isCheckMarcado()); // O checkbox nesta aplicação se inicia desligado.
@@ -68,7 +70,7 @@ public class FormularioTeste extends BaseTest {
     }
 
     @Test
-    public void CadastrarUsuario() {
+    public void cadastrarUsuario() {
 
         /** Cenário: preenchendo campos **/
 
@@ -84,6 +86,35 @@ public class FormularioTeste extends BaseTest {
         Assert.assertEquals("Console: switch", formularioPage.obterConsoleCadastrado());
         Assert.assertTrue(formularioPage.obterCheckCadastrado().endsWith("Marcado"));
         Assert.assertTrue(formularioPage.obterSwitchCadastrado().endsWith("Off"));
+    }
+
+    @Test
+    public void alterarData(){
+        //clica na data.
+        formularioPage.clicaData("01/01/2000");
+
+        //altera data
+        formularioPage.clicar(By.id("android:id/next")); // altera o mês.
+        formularioPage.clicarPorTexto("25"); // seleciona o dia.
+        formularioPage.clicarPorTexto("OK"); // confirma.
+
+        //verifica data alterada.
+        Assert.assertTrue(formularioPage.verificaData("25/3/2000"));
+
+    }
+
+    @Test
+    public void alterarHora(){
+        //clica na hora
+        formularioPage.clicaHora("06:00");
+
+        //altera a hora
+        formularioPage.clicar(MobileBy.AccessibilityId("16")); // seleciona a hora.
+        formularioPage.clicar(MobileBy.AccessibilityId("30")); // altera os minutos.
+        formularioPage.clicarPorTexto("OK");
+
+        //verifica alteração da hora
+        Assert.assertTrue(formularioPage.verificaHora("16:30"));
     }
 
 

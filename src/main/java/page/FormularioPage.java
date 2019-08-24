@@ -59,5 +59,21 @@ public class FormularioPage extends BasePage {
         return obterTexto(MobileBy.xpath("//android.widget.TextView[starts-with(@text, 'Switch: ')]"));
     }
 
+    public void clicaData(String data){
+        clicarPorTexto(data);
+    }
+
+    public void clicaHora(String hora){
+        clicarPorTexto(hora);
+    }
+
+    public boolean verificaData(String data){
+      return  existeElemento(By.xpath("//*[@text='"+data+"']"));
+    }
+
+    public boolean verificaHora(String hora){
+        return  existeElemento(By.xpath("//*[@text='"+hora+"']"));
+    }
+
 
 }
