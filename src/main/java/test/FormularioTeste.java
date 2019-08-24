@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.net.MalformedURLException;
+
 
 /**
  * A Activity Formulário contém uma tela de cadastro com várias funcionalidades.
@@ -32,28 +32,28 @@ public class FormularioTeste extends BaseTest {
 
     @Test
     public void preencheCampoTexto() {
-        /**Cenário */
+        //Cenário
         formularioPage.escreverNome("Lucas");
 
-        /**Validação*/
+        //Validação
         Assert.assertEquals("Lucas", formularioPage.obterNome());
 
     }
 
     @Test
-    public void interageComboBox() throws MalformedURLException {
+    public void interageComboBox() {
 
-        /**Cenário */
+        //Cenário
         formularioPage.selecionarComboBox("PS4");
 
-        /**Validação*/
+        //Validação
         Assert.assertEquals("PS4", formularioPage.obterValorCombo());
 
     }
 
     @Test
     public void interageSwitchCheckBox() {
-        /**Cenário */
+        //Cenário
         //Verificar status do CheckBox e do Switch antes do clique.
         Assert.assertFalse(formularioPage.isCheckMarcado()); // O checkbox nesta aplicação se inicia desligado.
         Assert.assertTrue(formularioPage.isSwitchMarcado()); // O switch nesta aplicação se inicia ligado.
@@ -62,7 +62,7 @@ public class FormularioTeste extends BaseTest {
         formularioPage.clicarCheck();
         formularioPage.clicarSwitch();
 
-        /**Validação */
+        //Validação
         //Verificar alteração
         Assert.assertTrue(formularioPage.isCheckMarcado());
         Assert.assertFalse(formularioPage.isSwitchMarcado());
@@ -72,7 +72,7 @@ public class FormularioTeste extends BaseTest {
     @Test
     public void cadastrarUsuario() {
 
-        /** Cenário: preenchendo campos **/
+        // Cenário: preenchendo campos
 
         formularioPage.escreverNome("Lucas Porto Gomes");
         formularioPage.selecionarComboBox("Nintendo Switch");
@@ -80,7 +80,7 @@ public class FormularioTeste extends BaseTest {
         formularioPage.clicarSwitch();
         formularioPage.salvarCadastro();
 
-        /** Validação **/
+        // Validação
 
         Assert.assertEquals("Nome: Lucas Porto Gomes", formularioPage.obterNomeCadastrado());
         Assert.assertEquals("Console: switch", formularioPage.obterConsoleCadastrado());

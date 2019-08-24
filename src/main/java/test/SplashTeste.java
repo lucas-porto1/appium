@@ -25,8 +25,8 @@ public class SplashTeste extends BaseTest {
         menuPage.acessarSplash();
 
         //Verificar o splash que está sendo exibido.
-        splashPage.splashVisivel();
-        //  Assert.assertTrue(DriverFactory.getDriver().findElement(By.xpath("//*[@text='Splash!']")).isDisplayed());
+        Assert.assertTrue(splashPage.splashVisivel());
+
 
         //Aguardar saída do splash.
         splashPage.aguardarSplashSumir();
