@@ -8,8 +8,9 @@ import page.MenuPage;
 import page.SplashPage;
 
 /**
- * O SplashTeste é uma tela simples que ao entrar, terá um tempo de retorno automático.
+ * O Splash é uma activity simples que ao entrar, terá um tempo de retorno automático.
  * O método irá validar o sincronismo dos elementos que aparecem e desaparecem da tela.
+ *
  * @author Lucas Porto Gomes
  */
 

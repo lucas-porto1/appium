@@ -10,7 +10,8 @@ import org.junit.Test;
 import java.net.MalformedURLException;
 
 /**
- * Projeto Formulário - Com Design Patterns.
+ * A Activity Formulário contém uma tela de cadastro com várias funcionalidades.
+ * O intuíto é validar o cadastro do usuário e verificar se todos os campos estão funcionais.
  *
  * @author Lucas Porto Gomes
  */
