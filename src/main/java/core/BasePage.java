@@ -1,6 +1,9 @@
 package core;
 
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+
+import java.util.List;
 
 import static core.DriverFactory.*;
 
@@ -36,6 +39,15 @@ public class BasePage {
         return getDriver().findElement(by).getAttribute("checked").equals("true");
     }
 
+    public boolean existeElemento(By by){
+        return getDriver().findElement(by).isDisplayed();
+    }
+
+    /** Alternativa do método existe elementos, mas com FindElements**/
+    public boolean existemElementos(By by){
+        List<MobileElement> elements = getDriver().findElements(by);
+        return elements.size() > 0;
+    }
 
 
 
