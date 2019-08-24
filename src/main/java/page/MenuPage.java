@@ -22,4 +22,12 @@ public class MenuPage extends BasePage {
     public void acessarAlert() {
         clicarPorTexto("Alertas");
     }
+
+    public void acessarAbas() {
+        clicarPorTexto("Abas");
+    }
+
+    public void acessarAccordion() {
+        clicarPorTexto("Accordion");
+    }
 }
