@@ -1,7 +1,6 @@
 # Appium
 
-Projeto com testes de funcionalidade com o uso das ferramentas:
-Java; Appium; JUnit.
+Projeto com testes de funcionalidade utilizando Java, Maven, Appium e JUnit.
 
 ## pom.xml
 É o arquivo de configuração do Maven.
@@ -9,10 +8,10 @@ Java; Appium; JUnit.
 Arquivo com a configuração das versões e dependências do Selenium e JUnit.
 
 ## src/main/java/core
-Pacote com DSL e Driver Factory.
+Pacote com os drivers e as bases dos testes.
 
 ## src/main/java/page
-Pacote com PageObjects e DSL.
+Pacote com as classes PageObjects.
 
 ## src/main/java/test
-Pacote com os arquivos main.
+Pacote com as classes de teste.
