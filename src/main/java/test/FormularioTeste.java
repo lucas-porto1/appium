@@ -117,5 +117,15 @@ public class FormularioTeste extends BaseTest {
         Assert.assertTrue(formularioPage.verificaHora("16:30"));
     }
 
+    @Test
+    public void interageSeekBar() {
+        //clicar no seekbar
+        formularioPage.clicarSeekBar(0.67);
+
+        //salvar
+        formularioPage.salvarCadastro();
+
+    }
+
 
 }

@@ -1,7 +1,9 @@
 package page;
 
 import core.BasePage;
+import core.DriverFactory;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
 public class FormularioPage extends BasePage {
@@ -37,6 +39,19 @@ public class FormularioPage extends BasePage {
 
     public boolean isSwitchMarcado() {
         return isCheckMarcado(MobileBy.AccessibilityId("switch"));
+    }
+
+    public void clicarSeekBar(double posicao) {
+        int delta = 48;
+        MobileElement seek = (MobileElement) DriverFactory.getDriver().findElement(MobileBy.AccessibilityId("slid"));
+        int y = seek.getLocation().y + (seek.getSize().height / 2);
+        System.out.println(y);
+
+        int xInicial = seek.getLocation().x + delta;
+        int x = (int) (xInicial + ((seek.getSize().width - 2 * delta) * posicao));
+        System.out.println(x);
+
+        tapScreen(x, y);
     }
 
     public void salvarCadastro() {
