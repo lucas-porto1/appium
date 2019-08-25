@@ -1,8 +1,9 @@
 package core;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
-
 import java.util.List;
 
 import static core.DriverFactory.*;
@@ -57,5 +58,17 @@ public class BasePage {
         return elements.size() >= x;
     }
 
+    //toque por coordenadas
+    public void tapScreen(int x, int y) {
+        new TouchAction(DriverFactory.getDriver()).tap(PointOption.point(x, y)).perform();
+    }
+
+    public void esperar(int tempo) {
+        try {
+            Thread.sleep(tempo);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
