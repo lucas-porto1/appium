@@ -30,9 +30,18 @@ public class AlertPage extends BasePage {
         return obterTexto(By.id("android:id/message"));
     }
 
+    public boolean existeMensagem(String mensagem) {
+        return existemElementos(By.xpath("//*[@text='" + mensagem + "']"));
+    }
+
     public void sairAlerta() {
         clicarPorTexto("SAIR");
     }
+
+    public void clicarFora() {
+        tapScreen(200, 200);
+    }
+
 
 
 }
