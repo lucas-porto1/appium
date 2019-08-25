@@ -4,6 +4,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+
+import java.time.Duration;
 import java.util.List;
 
 import static core.DriverFactory.*;
@@ -53,6 +56,10 @@ public class BasePage {
         return elements.size() > 0;
     }
 
+    public boolean existemElementosByText(String texto) {
+        return existemElementos(By.xpath("//*[@text='" + texto + "']"));
+    }
+
     public boolean existemQtdElementos(By by, int x) {
         List<MobileElement> elements = getDriver().findElements(by);
         return elements.size() >= x;
@@ -69,6 +76,55 @@ public class BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void scroll(double inicio, double fim) {
+        Dimension size = getDriver().manage().window().getSize();
+
+        int x = size.width / 2;
+
+        int yInicial = (int) (size.height * inicio);
+        int yFinal = (int) (size.height * fim);
+
+        new TouchAction(getDriver())
+                .longPress(PointOption.point(x, yInicial)) //pressiona
+                .moveTo(PointOption.point(x, yFinal)) // move a tela
+                .release() //solta a tela
+                .perform(); //realiza ação
+
+    }
+
+    public void scrollDown() {
+        scroll(0.9, 0.1);
+    }
+
+    public void scrollUp() {
+        scroll(0.1, 0.9);
+    }
+
+
+    public void swipe(double inicio, double fim) {
+        Dimension size = getDriver().manage().window().getSize();
+
+        int y = size.height / 2;
+
+        int xInicial = (int) (size.width * inicio);
+        int xFinal = (int) (size.width * fim);
+
+        new TouchAction(getDriver())
+                .longPress(PointOption.point(xInicial, y)) //pressiona
+                .moveTo(PointOption.point(xFinal, y)) // move a tela
+                .release() //solta a tela
+                .perform(); //realiza ação
+
+    }
+
+    public void swipeLeft() {
+        swipe(0.1, 0.9);
+    }
+
+    public void swipeRight() {
+        swipe(0.9, 0.1);
     }
 
 }
