@@ -2,6 +2,7 @@ package core;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -24,6 +25,10 @@ public class BasePage {
 
     public String obterTexto(By by) {
         return getDriver().findElement(by).getText();
+    }
+
+    public String obterTextoByText(String texto) {
+        return getDriver().findElementByXPath("//*[@text='"+texto+"']").getText();
     }
 
     public void clicar(By by) {
@@ -139,6 +144,11 @@ public class BasePage {
                 .release() //solta a tela
                 .perform(); //realiza ação
 
+    }
+
+    public void cliqueLongo(By by) {
+        new TouchAction(DriverFactory.getDriver())
+                .longPress(ElementOption.element(DriverFactory.getDriver().findElement(by))).perform();
     }
 
 }
