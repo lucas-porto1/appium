@@ -6,7 +6,6 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
-import java.time.Duration;
 import java.util.List;
 
 import static core.DriverFactory.*;
@@ -125,6 +124,21 @@ public class BasePage {
 
     public void swipeRight() {
         swipe(0.9, 0.1);
+    }
+
+    public void swipeElement(MobileElement element, double inicio, double fim) {
+
+        int y = element.getLocation().y + (element.getSize().height / 2);
+
+        int xInicial = (int) (element.getSize().width * inicio);
+        int xFinal = (int) (element.getSize().width * fim);
+
+        new TouchAction(getDriver())
+                .longPress(PointOption.point(xInicial, y)) //pressiona
+                .moveTo(PointOption.point(xFinal, y)) // move a tela
+                .release() //solta a tela
+                .perform(); //realiza ação
+
     }
 
 }

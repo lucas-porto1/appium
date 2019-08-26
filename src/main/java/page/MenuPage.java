@@ -1,6 +1,10 @@
 package page;
 
 import core.BasePage;
+import core.DriverFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * O aplicativo tem um menu principal ao ser aberto.
@@ -37,5 +41,26 @@ public class MenuPage extends BasePage {
 
     public void acessarSwipe() {
         clicarPorTexto("Swipe");
+    }
+
+    public void acessarSwipeList() {
+        WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+
+        //scroll down
+        scrollDown();
+
+        //clicar item
+        clicarPorTexto("Swipe List");
+    }
+
+    public void acessarDragAndDrop() {
+        WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+
+        //scroll down
+        scrollDown();
+
+        clicarPorTexto("Drag and drop");
     }
 }
