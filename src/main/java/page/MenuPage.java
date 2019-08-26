@@ -63,4 +63,8 @@ public class MenuPage extends BasePage {
 
         clicarPorTexto("Drag and drop");
     }
+
+    public void acessarSBHibrido(){
+        clicarPorTexto("SeuBarriga Híbrido");
+    }
 }
